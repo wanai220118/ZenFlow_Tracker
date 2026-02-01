@@ -2,6 +2,7 @@
   "expo": {
     "name": "ZenFlow Tracker",
     "slug": "ExerciseTracker",
+    "owner": "khalidahsyazwan",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
@@ -18,16 +19,20 @@
     "ios": {
       "supportsTablet": true
     },
-      "android": {
-        "package": "com.zenflow.tracker",
-        "adaptiveIcon": {
-          "foregroundImage": "./assets/images/logo.png",
-          "backgroundColor": "#103713"
-        }
-      },
+    "android": {
+      "package": "com.zenflow.tracker",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/logo.png",
+        "backgroundColor": "#103713"
+      }
+    },
     "web": {
       "favicon": "./assets/images/logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f1173023-db71-457e-946a-785f7a349028"
+      }
     }
   }
 }
-
