@@ -1,172 +1,141 @@
 # ZenFlow Tracker
 
-A beautiful React Native app for tracking daily exercise, weight, steps, and ancient exercise routines with video guidance.
+A React Native app for tracking daily exercise, weight, steps, and exercise routines with video guidance. Built with Expo.
 
 ## Features
 
-- **Profile Management**: Store your age, height, and weight
-- **Daily Tracking**: Log daily weight, steps walked, and VStepper steps
-- **Ancient Exercises**: 11 traditional exercises with video demonstrations
-- **Exercise Timer**: 3 sets per exercise with built-in timer
-- **Video Playback**: Watch exercise videos with play/pause and auto-play options
-- **Statistics**: View your progress and weekly overview
-- **Beautiful UI**: Modern design with a calming color palette
+- **Profile Management** — Store age, height, weight, and goals
+- **Daily Tracking** — Log daily weight, steps walked, and VStepper steps
+- **Exercise Library** — Add your own exercises with optional video demonstrations; edit or remove anytime
+- **Exercise Timer** — 3 sets per exercise with built-in timer and rest periods
+- **Video Playback** — Watch exercise videos with play/pause and auto-play
+- **Statistics & Charts** — Progress, weekly overview, and weight chart
+- **Workout History** — View past workouts and summaries
+- **Goal Setting** — Set and track fitness goals
+- **Export Data** — Export your data for backup
+- **Edit & Delete Exercises** — Customize the exercise list
 
 ## Color Palette
 
-- Primary Dark: `#103713`
-- Primary Green: `#628B35`
-- Light Beige: `#E2DBD0`
-- Off White: `#FFFDF5`
+| Name         | Hex       |
+| ------------ | --------- |
+| Primary Dark | `#103713` |
+| Primary Green| `#628B35` |
+| Light Beige  | `#E2DBD0` |
+| Off White    | `#FFFDF5` |
 
-## Installation
+## Getting Started
 
-1. Install dependencies:
-```bash
-npm install
-```
+### Prerequisites
 
-2. Start the Expo development server:
-```bash
-npm start
-```
+- Node.js (v18 or later)
+- npm or yarn
 
-3. Run on your device:
+### Installation
 
-   **Option A: Android Emulator (Recommended - No Expo Go needed)**
-   - Install [Android Studio](https://developer.android.com/studio)
-   - Create an Android Virtual Device (AVD)
-   - Run: `npm run android`
-   - App will build and run directly on emulator
-
-   **Option B: iOS Simulator (Mac only)**
-   - Install Xcode from App Store
-   - Run: `npm run ios`
-
-   **Option C: Expo Go (If network allows)**
-   - Install Expo Go app on your phone
-   - Scan QR code with Expo Go app
-   - See [ALTERNATIVES.md](./ALTERNATIVES.md) if Expo Go doesn't work
-
-   **Option D: Development Build (For real device)**
-   - See [ALTERNATIVES.md](./ALTERNATIVES.md) for setup instructions
-
-## Troubleshooting
-
-### QR Code DNS Error
-If you see "DNS_PROBE_FINISHED_NXDOMAIN" when scanning the QR code:
-
-1. **Make sure you're using Expo Go app**, not your phone's camera or browser
-2. **Try different connection modes**:
-   - If on the same WiFi network: `npm run start:lan`
-   - If on different networks: `npm run start:tunnel` (uses tunnel mode)
-   - For localhost only: `npm run start:localhost`
-3. **Check your firewall** - it might be blocking the connection
-4. **Ensure both devices are on the same network** (for LAN mode)
-
-### "Failed to download remote update" Error
-If you see "java.io.IOException: Failed to download remote update":
-
-1. **Clear Expo cache and restart**:
+1. **Install dependencies**
    ```bash
-   npx expo start --clear
+   npm install
    ```
 
-2. **Check your network connection**:
-   - Make sure your computer and phone are on the same WiFi network
-   - Try disconnecting and reconnecting to WiFi on both devices
-
-3. **Try tunnel mode** (works across different networks):
+2. **Start the development server**
    ```bash
-   npm run start:tunnel
+   npm start
    ```
 
-4. **Restart Expo server**:
-   - Stop the server (Ctrl+C)
-   - Clear cache: `npx expo start --clear`
-   - Restart: `npm start`
+3. **Run the app**
 
-5. **Check firewall/antivirus**:
-   - Temporarily disable firewall to test
-   - Allow Node.js and Expo through firewall
+   | Option | Command | Notes |
+   |--------|---------|--------|
+   | **Android Emulator** | `npm run android` | Requires [Android Studio](https://developer.android.com/studio) and an AVD. See [EMULATOR_SETUP.md](./EMULATOR_SETUP.md). |
+   | **iOS Simulator** (Mac) | `npm run ios` | Requires Xcode. |
+   | **Web** | `npm run web` | Test in browser. |
+   | **Expo Go** | Scan QR from terminal | Install Expo Go on your phone. See [ALTERNATIVES.md](./ALTERNATIVES.md) if connection fails. |
 
-6. **Try a different network**:
-   - Switch to mobile hotspot
-   - Or use a different WiFi network
+## Building for Production
 
-7. **Update Expo Go app**:
-   - Make sure you have the latest version of Expo Go installed
-
-8. **If still failing, try localhost mode**:
-   ```bash
-   npm run start:localhost
-   ```
-   Then manually enter the URL shown in terminal into Expo Go app
+- **Local APK (debug):** [BUILD_APK_LOCAL.md](./BUILD_APK_LOCAL.md) or [QUICK_APK_GUIDE.md](./QUICK_APK_GUIDE.md)
+- **EAS Build (cloud):** [EAS_BUILD_STEPS.md](./EAS_BUILD_STEPS.md)
+- **Troubleshooting builds:** [BUILD_TROUBLESHOOTING.md](./BUILD_TROUBLESHOOTING.md), [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 
 ## Project Structure
 
 ```
 ExerciseTracker/
-├── App.js                 # Main app entry point
-├── app.json              # Expo configuration
-├── package.json          # Dependencies
+├── App.js                    # App entry point
+├── app.json                  # Expo config (name: ZenFlow Tracker)
+├── package.json
 ├── assets/
-│   ├── images/
-│   │   ├── logo.png     # App logo
-│   │   └── placeholder.jpg
-│   └── videos/
-│       └── dummyvid.mp4
+│   ├── images/               # logo.png, placeholder.jpg
+│   └── videos/               # Exercise demo videos
 └── src/
-    ├── components/       # Reusable components
+    ├── components/
+    │   ├── ErrorBoundary.js
     │   ├── ExerciseCard.js
+    │   ├── LoadingScreen.js
+    │   ├── RestTimer.js
     │   ├── StepCounter.js
-    │   └── Timer.js
+    │   ├── Timer.js
+    │   └── WeightChart.js
     ├── data/
-    │   └── exercises.js # Exercise data
+    │   └── exercises.js      # Exercise definitions
     ├── navigation/
     │   └── AppNavigator.js
-    ├── screens/          # App screens
+    ├── screens/
+    │   ├── AddEditExerciseScreen.js
     │   ├── DailyEntryScreen.js
+    │   ├── DashboardScreen.js
     │   ├── ExerciseDetailScreen.js
     │   ├── ExerciseListScreen.js
+    │   ├── ExerciseSummaryScreen.js
+    │   ├── ExportDataScreen.js
+    │   ├── GoalSettingScreen.js
     │   ├── ProfileScreen.js
-    │   └── StatsScreen.js
+    │   ├── StatsScreen.js
+    │   └── WorkoutHistoryScreen.js
     └── storage/
-        └── localStorage.js # Data persistence
+        └── localStorage.js  # AsyncStorage persistence
 ```
-
-## Exercises Included
-
-1. Lymphatic Hopping
-2. Arm Swings
-3. Trunk Twists
-4. Body Waves
-5. Spinal Twists
-6. Underarm Tapping
-7. Marches
-8. Horse Stance Swings 100
-9. Knee Lifts with Downward Press
-10. Waist Arm Movement
-11. Lunges with Press
 
 ## Usage
 
-1. **Profile**: Start by entering your age, height, and weight in the Profile tab
-2. **Daily Entry**: Log your daily weight, steps, and VStepper steps
-3. **Exercises**: Browse exercises, select one, and complete 3 sets with the timer
-4. **Stats**: View your progress and weekly statistics
+1. **Profile** — Enter age, height, weight, and goals in the Profile tab.  
+2. **Daily Entry** — Log daily weight, steps, and VStepper steps.  
+3. **Exercises** — Pick an exercise, follow the video, and complete 3 sets with the timer.  
+4. **Stats** — View progress, weekly stats, and weight chart.  
+5. **History** — Review past workouts and summaries.  
 
-## Technologies Used
+## Scripts
 
-- React Native
-- Expo
-- React Navigation
-- AsyncStorage for data persistence
-- Expo AV for video playback
+| Script | Description |
+|--------|-------------|
+| `npm start` | Start Expo (LAN) |
+| `npm run start:clear` | Start with cache cleared |
+| `npm run start:tunnel` | Start with tunnel (for Expo Go on different network) |
+| `npm run android` | Run on Android device/emulator |
+| `npm run ios` | Run on iOS simulator |
+| `npm run web` | Run in browser |
 
-## Notes
+## Tech Stack
 
-- All data is stored locally on your device
-- Placeholder images and videos are used (replace with actual content)
-- The app name "ZenFlow Tracker" provides a more elegant branding than "Exercise Tracker"
+- **React Native** + **Expo** (SDK 54)
+- **React Navigation** (stack + bottom tabs)
+- **AsyncStorage** — local data
+- **Expo AV** — video playback
+- **Expo Image Picker** — profile/photo (if used)
 
+## Data & Privacy
+
+- All data is stored **locally** on the device (AsyncStorage).  
+- No account or server required.  
+- Use **Export Data** in the app to backup or move your data.  
+
+## Troubleshooting
+
+- **QR / Expo Go connection:** [EXPO_GO_TROUBLESHOOTING.md](./EXPO_GO_TROUBLESHOOTING.md), [FIX_EXPO_CONNECTION.md](./FIX_EXPO_CONNECTION.md)  
+- **Build / SDK issues:** [BUILD_TROUBLESHOOTING.md](./BUILD_TROUBLESHOOTING.md), [FIX_SDK_VERSION.md](./FIX_SDK_VERSION.md)  
+- **USB / device:** [USB_CONNECTION_GUIDE.md](./USB_CONNECTION_GUIDE.md)  
+
+## License
+
+Private project. See repository owner for terms.
