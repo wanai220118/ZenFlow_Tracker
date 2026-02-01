@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "ZenFlow Tracker",
+    "slug": "ExerciseTracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#103713"
+    },
+    "assetBundlePatterns": [
+      "assets/images/**",
+      "!assets/videos/**"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+      "android": {
+        "package": "com.zenflow.tracker",
+        "adaptiveIcon": {
+          "foregroundImage": "./assets/images/logo.png",
+          "backgroundColor": "#103713"
+        }
+      },
+    "web": {
+      "favicon": "./assets/images/logo.png"
+    }
+  }
+}
+
