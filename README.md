@@ -130,12 +130,6 @@ ExerciseTracker/
 - No account or server required.  
 - Use **Export Data** in the app to backup or move your data.  
 
-## Troubleshooting
-
-- **QR / Expo Go connection:** [EXPO_GO_TROUBLESHOOTING.md](./EXPO_GO_TROUBLESHOOTING.md), [FIX_EXPO_CONNECTION.md](./FIX_EXPO_CONNECTION.md)  
-- **Build / SDK issues:** [BUILD_TROUBLESHOOTING.md](./BUILD_TROUBLESHOOTING.md), [FIX_SDK_VERSION.md](./FIX_SDK_VERSION.md)  
-- **USB / device:** [USB_CONNECTION_GUIDE.md](./USB_CONNECTION_GUIDE.md)  
-
 ## License
 
 Private project. See repository owner for terms.
